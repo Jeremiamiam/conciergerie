@@ -32,18 +32,58 @@ export default function LocationPage({ params }: { params: { slug: string } }) {
     return acc;
   }, {} as Record<string, typeof services>);
 
-  // Appliquer des couleurs différentes en fonction du lieu (vert pour La Cabane, bleu pour les autres)
-  const isLaCabane = location.slug === 'lacabane';
-  const primaryColor = isLaCabane ? 'green-600' : 'indigo-600';
-  const primaryHoverColor = isLaCabane ? 'green-800' : 'indigo-800';
-  const darkPrimaryColor = isLaCabane ? 'green-700' : 'indigo-700';
-  const darkerPrimaryColor = isLaCabane ? 'green-800' : 'indigo-800';
-  const lightPrimaryColor = isLaCabane ? 'green-100' : 'indigo-100';
-  const primaryBgGradient = isLaCabane 
-    ? 'linear-gradient(rgba(22, 101, 52, 0.8), rgba(22, 101, 52, 0.8))' 
-    : 'linear-gradient(rgba(67, 56, 202, 0.8), rgba(67, 56, 202, 0.8))';
-  const primaryBgOpacity = isLaCabane ? 'green-800 bg-opacity-50' : 'indigo-800 bg-opacity-50';
-  const lightBgColor = isLaCabane ? 'green-50' : 'indigo-50';
+  // Appliquer des couleurs différentes en fonction du lieu
+  // Une couleur unique pour chaque espace
+  const getLocationColors = () => {
+    switch (location.slug) {
+      case 'lacabane': // Vert pour La Cabane
+        return {
+          primary: 'green-600',
+          hover: 'green-800',
+          dark: 'green-700',
+          darker: 'green-800',
+          light: 'green-100',
+          bgGradient: 'linear-gradient(rgba(22, 101, 52, 0.8), rgba(22, 101, 52, 0.8))',
+          bgOpacity: 'green-800 bg-opacity-50',
+          lightBg: 'green-50'
+        };
+      case 'arkea': // Violet pour Arkea
+        return {
+          primary: 'purple-600',
+          hover: 'purple-800',
+          dark: 'purple-700',
+          darker: 'purple-800',
+          light: 'purple-100',
+          bgGradient: 'linear-gradient(rgba(126, 34, 206, 0.8), rgba(126, 34, 206, 0.8))',
+          bgOpacity: 'purple-800 bg-opacity-50',
+          lightBg: 'purple-50'
+        };
+      case 'pei': // Orange pour PEI
+        return {
+          primary: 'orange-500',
+          hover: 'orange-700',
+          dark: 'orange-600',
+          darker: 'orange-700',
+          light: 'orange-100',
+          bgGradient: 'linear-gradient(rgba(234, 88, 12, 0.8), rgba(234, 88, 12, 0.8))',
+          bgOpacity: 'orange-700 bg-opacity-50',
+          lightBg: 'orange-50'
+        };
+      default: // Bleu par défaut
+        return {
+          primary: 'indigo-600',
+          hover: 'indigo-800',
+          dark: 'indigo-700',
+          darker: 'indigo-800',
+          light: 'indigo-100',
+          bgGradient: 'linear-gradient(rgba(67, 56, 202, 0.8), rgba(67, 56, 202, 0.8))',
+          bgOpacity: 'indigo-800 bg-opacity-50',
+          lightBg: 'indigo-50'
+        };
+    }
+  };
+
+  const colors = getLocationColors();
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -52,15 +92,15 @@ export default function LocationPage({ params }: { params: { slug: string } }) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex justify-between items-center">
             <div className="flex items-center">
-              <div className={`w-12 h-12 bg-${primaryColor} rounded-full mr-4`}></div>
+              <div className={`w-12 h-12 bg-${colors.primary} rounded-full mr-4`}></div>
               <h1 className="text-2xl font-bold text-gray-900">Les Conciergeries Rennaises</h1>
             </div>
             <nav className="flex space-x-6">
-              <Link href="/" className={`text-gray-500 hover:text-${primaryColor}`}>Accueil</Link>
-              <Link href="/#services" className={`text-gray-500 hover:text-${primaryColor}`}>Services</Link>
-              <Link href="/#locations" className={`text-gray-500 hover:text-${primaryColor}`}>Nos espaces</Link>
-              <Link href="/#about" className={`text-gray-500 hover:text-${primaryColor}`}>À propos</Link>
-              <Link href="/#contact" className={`text-gray-500 hover:text-${primaryColor}`}>Contact</Link>
+              <Link href="/" className={`text-gray-500 hover:text-${colors.primary}`}>Accueil</Link>
+              <Link href="/#services" className={`text-gray-500 hover:text-${colors.primary}`}>Services</Link>
+              <Link href="/#locations" className={`text-gray-500 hover:text-${colors.primary}`}>Nos espaces</Link>
+              <Link href="/#about" className={`text-gray-500 hover:text-${colors.primary}`}>À propos</Link>
+              <Link href="/#contact" className={`text-gray-500 hover:text-${colors.primary}`}>Contact</Link>
             </nav>
           </div>
         </div>
@@ -68,9 +108,9 @@ export default function LocationPage({ params }: { params: { slug: string } }) {
 
       {/* Hero Section */}
       <section 
-        className={`bg-${darkPrimaryColor} text-white py-20`}
+        className={`bg-${colors.dark} text-white py-20`}
         style={{ 
-          backgroundImage: primaryBgGradient, 
+          backgroundImage: colors.bgGradient, 
           backgroundSize: 'cover',
           backgroundPosition: 'center'
         }}
@@ -80,15 +120,15 @@ export default function LocationPage({ params }: { params: { slug: string } }) {
             <h1 className="text-4xl font-bold mb-4">{location.name}</h1>
             <p className="text-xl mb-6">{location.description}</p>
             <div className="flex flex-wrap gap-4 mb-6 text-sm">
-              <div className={`bg-${primaryBgOpacity} px-4 py-2 rounded-full`}>
+              <div className={`bg-${colors.bgOpacity} px-4 py-2 rounded-full`}>
                 <strong>Adresse:</strong> {location.address}
               </div>
-              <div className={`bg-${primaryBgOpacity} px-4 py-2 rounded-full`}>
+              <div className={`bg-${colors.bgOpacity} px-4 py-2 rounded-full`}>
                 <strong>Horaires:</strong> {location.openingHours}
               </div>
             </div>
             <div className="flex gap-4">
-              <button className={`bg-white text-${darkPrimaryColor} px-6 py-3 rounded-lg font-medium`}>
+              <button className={`bg-white text-${colors.dark} px-6 py-3 rounded-lg font-medium`}>
                 Nos services
               </button>
             </div>
@@ -105,7 +145,7 @@ export default function LocationPage({ params }: { params: { slug: string } }) {
               <p className="text-gray-600">{location.contactPerson}</p>
               <p className="text-gray-600">{location.email}</p>
               <p className="text-gray-600">{location.phone}</p>
-              {isLaCabane && (
+              {location.slug === 'lacabane' && (
                 <p className="text-gray-600 mt-2 max-w-md">
                   Votre concierge est un professionnel des Conciergeries Rennaises, 
                   présent pour faciliter votre quotidien et coordonner tous les services proposés.
@@ -114,7 +154,7 @@ export default function LocationPage({ params }: { params: { slug: string } }) {
             </div>
             <div className="flex flex-col items-center md:items-end">
               <h3 className="text-xl font-bold mb-2">Services disponibles</h3>
-              <p className={`text-3xl font-bold text-${primaryColor}`}>{location.availableServices.length}</p>
+              <p className={`text-3xl font-bold text-${colors.primary}`}>{location.availableServices.length}</p>
             </div>
           </div>
         </div>
@@ -124,19 +164,19 @@ export default function LocationPage({ params }: { params: { slug: string } }) {
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-center mb-12">
-            {isLaCabane 
+            {location.slug === 'lacabane' 
               ? "Services de conciergerie disponibles" 
               : "Services disponibles"}
           </h2>
           <p className="text-gray-600 text-center max-w-3xl mx-auto mb-10">
-            {isLaCabane 
+            {location.slug === 'lacabane' 
               ? "Tous les services ci-dessous sont proposés et coordonnés par Les Conciergeries Rennaises dans l'espace La Cabane. Notre équipe de concierges se charge de faciliter votre quotidien."
               : "Découvrez les services que nous proposons dans cet espace de conciergerie."}
           </p>
           
           {/* Filtres par catégorie */}
           <div className="flex flex-wrap justify-center gap-3 mb-10">
-            <button className={`bg-${primaryColor} text-white px-4 py-2 rounded-full`}>
+            <button className={`bg-${colors.primary} text-white px-4 py-2 rounded-full`}>
               Tous
             </button>
             {categories
@@ -144,7 +184,7 @@ export default function LocationPage({ params }: { params: { slug: string } }) {
               .map(category => (
                 <button 
                   key={category.id} 
-                  className={`bg-white text-gray-700 hover:bg-${lightPrimaryColor} hover:text-${primaryColor} px-4 py-2 rounded-full border`}
+                  className={`bg-white text-gray-700 hover:bg-${colors.light} hover:text-${colors.primary} px-4 py-2 rounded-full border`}
                 >
                   {category.name}
                 </button>
@@ -159,8 +199,8 @@ export default function LocationPage({ params }: { params: { slug: string } }) {
             return (
               <div key={categoryId} className="mb-16">
                 <h3 className="text-2xl font-bold mb-8 flex items-center">
-                  <span className={`w-10 h-10 bg-${lightPrimaryColor} text-${primaryColor} rounded-full flex items-center justify-center mr-3`}>
-                    {category?.icon}
+                  <span className={`w-10 h-10 bg-${colors.light} text-${colors.primary} rounded-full flex items-center justify-center mr-3`}>
+                    {/* Suppression de l'icône qui cause la superposition */}
                   </span>
                   {category?.name}
                 </h3>
@@ -176,7 +216,7 @@ export default function LocationPage({ params }: { params: { slug: string } }) {
                           <span className="text-sm font-medium text-gray-800">
                             {service.provider}
                           </span>
-                          <button className={`text-${primaryColor} hover:text-${primaryHoverColor}`}>
+                          <button className={`text-${colors.primary} hover:text-${colors.hover}`}>
                             Détails
                           </button>
                         </div>
@@ -191,7 +231,7 @@ export default function LocationPage({ params }: { params: { slug: string } }) {
       </section>
 
       {/* Contact Section */}
-      <section className={`py-16 bg-${lightBgColor}`}>
+      <section className={`py-16 bg-${colors.lightBg}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <div>
@@ -203,7 +243,7 @@ export default function LocationPage({ params }: { params: { slug: string } }) {
               
               <div className="bg-white p-6 rounded-lg shadow-sm">
                 <div className="flex items-center mb-4">
-                  <div className={`w-12 h-12 bg-${lightPrimaryColor} rounded-full flex items-center justify-center mr-4`}>
+                  <div className={`w-12 h-12 bg-${colors.light} rounded-full flex items-center justify-center mr-4`}>
                     👤
                   </div>
                   <div>
@@ -249,7 +289,7 @@ export default function LocationPage({ params }: { params: { slug: string } }) {
                       className="w-full px-4 py-2 border border-gray-300 rounded-md"
                     ></textarea>
                   </div>
-                  <button type="submit" className={`bg-${primaryColor} text-white px-6 py-3 rounded-md font-medium w-full`}>
+                  <button type="submit" className={`bg-${colors.primary} text-white px-6 py-3 rounded-md font-medium w-full`}>
                     Envoyer
                   </button>
                 </div>
@@ -290,7 +330,7 @@ export default function LocationPage({ params }: { params: { slug: string } }) {
               <h4 className="text-md font-bold mb-4">Inscrivez-vous à notre newsletter</h4>
               <div className="flex">
                 <input type="email" placeholder="Votre email" className="px-4 py-2 w-full rounded-l-md" />
-                <button className={`bg-${primaryColor} text-white px-4 py-2 rounded-r-md`}>OK</button>
+                <button className={`bg-${colors.primary} text-white px-4 py-2 rounded-r-md`}>OK</button>
               </div>
             </div>
           </div>

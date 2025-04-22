@@ -1,0 +1,34 @@
+{
+  "categories": [
+    {
+      "id": "alimentation",
+      "name": "Alimentation",
+      "icon": "ShoppingBasket",
+      "description": "Fruits, légumes, produits locaux et commandes groupées"
+    },
+    {
+      "id": "services",
+      "name": "Services",
+      "icon": "Briefcase",
+      "description": "Pressing, cordonnerie, couture, services automobiles"
+    },
+    {
+      "id": "bienetre",
+      "name": "Bien-être",
+      "icon": "Heart",
+      "description": "Massages, coaching, soins esthétiques"
+    },
+    {
+      "id": "mobilite",
+      "name": "Mobilité",
+      "icon": "Car",
+      "description": "Covoiturage, location, services auto"
+    },
+    {
+      "id": "evenements",
+      "name": "Événements",
+      "icon": "Calendar",
+      "description": "Ateliers, rencontres, animations"
+    }
+  ]
+} 

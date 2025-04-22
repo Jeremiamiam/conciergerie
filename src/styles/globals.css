@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 
+* Ce fichier ne contient que les styles globaux de base.
+* Le thème est géré par DaisyUI via data-theme et les variables CSS.
+*/
+
+/* Définition de thèmes avec le format standard de DaisyUI */
+
+/* Le thème "coucou" a été supprimé car il semblait être un test */
+
+@layer base {
+  html {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 
+      'Helvetica Neue', Arial, sans-serif;
+  }
+  
+  /* Les titres et le corps utilisent la couleur --bc (base-content) définie par DaisyUI */
+  /* Les !important ont été supprimés pour laisser DaisyUI gérer le contraste */
+  h1, h2, h3, h4, h5, h6, h1 *, h2 *, h3 *, h4 *, h5 *, h6 * {
+    color: hsl(var(--bc)); 
+    text-decoration: none; /* Keep text-decoration none */
+  }
+  
+  body {
+    /* La couleur du body est gérée par DaisyUI via --bc sur html/body */
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-montserrat);
+  }
+}
+
+/* 
+* Classes utilitaires pour le débogage et le développement
+*/
+.debug-css-vars {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 10px;
+  font-family: monospace;
+  font-size: 12px;
+  z-index: 9999;
+  max-height: 300px;
+  overflow-y: auto;
+  width: 300px;
+}

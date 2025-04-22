@@ -1,0 +1,112 @@
+{
+  "locations": [
+    {
+      "id": "lacabane",
+      "name": "La Cabane",
+      "slug": "lacabane",
+      "description": "Espace de conciergerie situé au cœur du quartier ViaSilva, proposant des services du quotidien et des événements pour les habitants.",
+      "address": "Quartier ViaSilva, Cesson-Sévigné",
+      "image": "/images/mock/lacabane.jpg",
+      "coverImage": "/images/mock/lacabane-cover.jpg",
+      "openingHours": "Lundi au vendredi: 9h-12h et 14h-18h",
+      "contactPerson": "Pierre Poulain",
+      "email": "poulain.pierre@lesconciergeriesrennaises.fr",
+      "phone": "06 XX XX XX XX",
+      "availableServices": ["1", "2", "3", "4", "8", "9"],
+      "events": [
+        {
+          "id": "e1",
+          "title": "Atelier cuisine zéro déchet",
+          "date": "2025-05-15T18:00:00",
+          "description": "Apprenez à cuisiner en limitant vos déchets avec notre chef invité.",
+          "image": "/images/mock/event-cuisine.jpg"
+        },
+        {
+          "id": "e2",
+          "title": "Marché de producteurs locaux",
+          "date": "2025-05-22T16:00:00",
+          "description": "Rencontrez les producteurs locaux et découvrez leurs produits.",
+          "image": "/images/mock/event-marche.jpg"
+        }
+      ]
+    },
+    {
+      "id": "arkea",
+      "name": "Arkea",
+      "slug": "arkea",
+      "description": "Service de conciergerie pour les collaborateurs du groupe Arkea, facilitant l'équilibre vie professionnelle et vie personnelle.",
+      "address": "283 Rue Claude Chappe, Rennes",
+      "image": "/images/mock/arkea.jpg",
+      "coverImage": "/images/mock/arkea-cover.jpg",
+      "openingHours": "Lundi, mercredi, vendredi: 11h30-14h30",
+      "contactPerson": "Alice Cadu",
+      "email": "cadu.alice@lesconciergeriesrennaises.fr",
+      "phone": "06 XX XX XX XX",
+      "availableServices": ["1", "3", "4", "5", "6", "7", "9"],
+      "events": [
+        {
+          "id": "e3",
+          "title": "Café bien-être",
+          "date": "2025-05-18T12:30:00",
+          "description": "Pause détente avec dégustation de produits sains et locaux.",
+          "image": "/images/mock/event-cafe.jpg"
+        }
+      ]
+    },
+    {
+      "id": "pei",
+      "name": "PEI",
+      "slug": "pei",
+      "description": "Conciergerie dédiée aux collaborateurs de l'entreprise PEI, offrant des services pratiques pour faciliter le quotidien.",
+      "address": "12 Rue de la Rigourdière, Cesson-Sévigné",
+      "image": "/images/mock/pei.jpg",
+      "coverImage": "/images/mock/pei-cover.jpg",
+      "openingHours": "Mardi et jeudi: 10h-16h",
+      "contactPerson": "André Eludut",
+      "email": "eludut.andre@lesconciergeriesrennaises.fr",
+      "phone": "06 XX XX XX XX",
+      "availableServices": ["2", "3", "5", "8", "9"],
+      "events": []
+    }
+  ],
+  "company": {
+    "name": "Les Conciergeries Rennaises",
+    "founding": "2009",
+    "description": "Première conciergerie d'entreprises créée à Rennes, intervenant désormais à Rennes, Angers, Brest et Quimper, spécialisée dans la mise en place de services de conciergerie sur site avec présence d'un concierge.",
+    "mission": "Apporter une réponse innovante aux enjeux sociaux et sociétaux des entreprises, faciliter la fidélisation des salariés et renforcer l'attractivité de l'entreprise.",
+    "impact": {
+      "title": "Notre impact positif",
+      "description": "Les Conciergeries Rennaises s'engagent pour un développement durable et responsable, en favorisant les circuits courts et les prestataires locaux.",
+      "stats": [
+        {
+          "value": "25",
+          "label": "prestataires locaux"
+        },
+        {
+          "value": "12",
+          "label": "sites équipés"
+        },
+        {
+          "value": "5000+",
+          "label": "services rendus par an"
+        },
+        {
+          "value": "30%",
+          "label": "réduction des déplacements"
+        }
+      ]
+    },
+    "benefits": [
+      "Meilleur équilibre entre vie privée et vie professionnelle",
+      "Gain de temps et confort de vie",
+      "Augmentation du pouvoir d'achat (prix négociés, économie des coûts de déplacement)",
+      "Sécurité et qualité des services grâce à notre sélection de prestataires référencés"
+    ],
+    "contact": {
+      "address": "12 Rue des Conciergeries, 35000 Rennes",
+      "email": "contact@lesconciergeriesrennaises.fr",
+      "phone": "02 XX XX XX XX",
+      "website": "www.lesconciergeriesrennaises.fr"
+    }
+  }
+} 

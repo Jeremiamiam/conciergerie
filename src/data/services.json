@@ -1,0 +1,112 @@
+{
+  "services": [
+    {
+      "id": "1",
+      "category": "alimentation",
+      "name": "Panier de fruits et légumes bio",
+      "provider": "Saveurs de Saison",
+      "description": "Paniers de fruits et légumes de saison, bio et locaux, prédéfinis ou à la carte",
+      "location": "Bruz",
+      "process": "Commande via bon de commande par mail toutes les semaines",
+      "deliveryDay": "Jeudi",
+      "contact": "contact@saveursdesaison.fr",
+      "image": "/images/mock/panier-bio.jpg"
+    },
+    {
+      "id": "2",
+      "category": "alimentation",
+      "name": "Primeur bio et non bio",
+      "provider": "Saveurs de Saison",
+      "description": "Fruits et légumes de saison, issus de l'agriculture locale",
+      "location": "Bruz",
+      "process": "Commande directe auprès du concierge avant mardi 10h",
+      "deliveryDay": "Jeudi",
+      "contact": "contact@saveursdesaison.fr",
+      "image": "/images/mock/primeur.jpg"
+    },
+    {
+      "id": "3",
+      "category": "alimentation",
+      "name": "Commandes groupées",
+      "provider": "Divers producteurs locaux",
+      "description": "Offres spéciales négociées pour des produits locaux de qualité",
+      "location": "Région rennaise",
+      "process": "Inscription auprès du concierge, commande groupée mensuelle",
+      "deliveryDay": "Variable selon produit",
+      "contact": "concierge@lesconciergeriesrennaises.fr",
+      "image": "/images/mock/commandes-groupees.jpg"
+    },
+    {
+      "id": "4",
+      "category": "services",
+      "name": "Couture et retouches",
+      "provider": "Elodie Couture",
+      "description": "Service de retouches et réparations textiles",
+      "location": "Bruz",
+      "process": "Dépôt auprès du concierge, récupération sous 7 jours",
+      "deliveryDay": "Mardi",
+      "contact": "elodie@couture-bruz.fr",
+      "image": "/images/mock/couture.jpg"
+    },
+    {
+      "id": "5",
+      "category": "services",
+      "name": "Réparation automobile",
+      "provider": "GS Repair",
+      "description": "Réparations et entretien automobile",
+      "location": "Saint-Armel",
+      "process": "Réservation via le concierge, prise de rendez-vous personnalisée",
+      "deliveryDay": "Sur rendez-vous",
+      "contact": "contact@gsrepair.fr",
+      "image": "/images/mock/auto-repair.jpg"
+    },
+    {
+      "id": "6",
+      "category": "services",
+      "name": "Nettoyage véhicule",
+      "provider": "Cosmeticar",
+      "description": "Service de nettoyage de véhicule ambulant, sans eau",
+      "location": "Service ambulant",
+      "process": "Réservation 48h à l'avance auprès du concierge",
+      "deliveryDay": "Vendredi",
+      "contact": "rennes@cosmeticar.fr",
+      "image": "/images/mock/car-wash.jpg"
+    },
+    {
+      "id": "7",
+      "category": "services",
+      "name": "Contrôle technique",
+      "provider": "Centre de CT des Estuaires",
+      "description": "Service de contrôle technique automobile",
+      "location": "Saint-Grégoire",
+      "process": "Réservation via le concierge, tarif négocié",
+      "deliveryDay": "Sur rendez-vous",
+      "contact": "contact@ctestuaires.fr",
+      "image": "/images/mock/controle-technique.jpg"
+    },
+    {
+      "id": "8",
+      "category": "services",
+      "name": "Cordonnerie",
+      "provider": "Cordonnerie Du Centre",
+      "description": "Réparation de chaussures, sacs, et articles en cuir",
+      "location": "Bruz",
+      "process": "Dépôt auprès du concierge, récupération sous 7 jours",
+      "deliveryDay": "Jeudi",
+      "contact": "cordonnerieducentre@gmail.com",
+      "image": "/images/mock/cordonnerie.jpg"
+    },
+    {
+      "id": "9",
+      "category": "services",
+      "name": "Pressing",
+      "provider": "La Lavandière des Lices",
+      "description": "Service de nettoyage à sec et blanchisserie",
+      "location": "Vern-sur-Seiche, Janzé, Rennes",
+      "process": "Dépôt auprès du concierge, récupération sous 5 jours",
+      "deliveryDay": "Lundi et Jeudi",
+      "contact": "contact@lavandieredeslices.fr",
+      "image": "/images/mock/pressing.jpg"
+    }
+  ]
+} 

@@ -91,9 +91,6 @@ export default function LocationPage({ params }: { params: { slug: string } }) {
               <button className={`bg-white text-${darkPrimaryColor} px-6 py-3 rounded-lg font-medium`}>
                 Nos services
               </button>
-              <button className="bg-transparent border border-white text-white px-6 py-3 rounded-lg font-medium">
-                Événements
-              </button>
             </div>
           </div>
         </div>
@@ -192,39 +189,6 @@ export default function LocationPage({ params }: { params: { slug: string } }) {
           })}
         </div>
       </section>
-
-      {/* Events Section */}
-      {location.events && location.events.length > 0 && (
-        <section className="py-16 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-bold text-center mb-12">Événements à venir</h2>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {location.events.map((event) => (
-                <div key={event.id} className="bg-gray-50 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                  <div className="h-48 bg-gray-200"></div>
-                  <div className="p-6">
-                    <div className={`text-sm text-${primaryColor} mb-2`}>
-                      {new Date(event.date).toLocaleDateString('fr-FR', {
-                        day: 'numeric',
-                        month: 'long',
-                        year: 'numeric',
-                        hour: '2-digit',
-                        minute: '2-digit'
-                      })}
-                    </div>
-                    <h3 className="font-bold text-xl mb-3">{event.title}</h3>
-                    <p className="text-gray-600 mb-4">{event.description}</p>
-                    <button className={`bg-${primaryColor} text-white px-4 py-2 rounded-md w-full`}>
-                      S'inscrire
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
 
       {/* Contact Section */}
       <section className={`py-16 bg-${lightBgColor}`}>

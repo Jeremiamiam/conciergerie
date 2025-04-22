@@ -1,53 +1,53 @@
 export const colors = {
   light: {
-    primary: '#3498db',
-    'primary-content': '#ffffff', // Added
-    secondary: '#2ecc71',
-    'secondary-content': '#ffffff', // Added
-    accent: '#e74c3c',
-    'accent-content': '#ffffff', // Added
-    neutral: '#95a5a6',
-    'neutral-content': '#ffffff', // Added
-    base: '#ffffff', // Note: 'base' key might not directly map to a single DaisyUI var easily
-    background: '#ffffff', // Maps to --b1
-    surface: '#f8f9fa',    // Maps to --b2
+    primary: '#4F46E5',
+    'primary-content': '#ffffff',
+    secondary: '#06B6D4',
+    'secondary-content': '#ffffff',
+    accent: '#F97316',
+    'accent-content': '#ffffff',
+    neutral: '#6B7280',
+    'neutral-content': '#ffffff',
+    base: '#ffffff',
+    background: '#ffffff',
+    surface: '#f8f9fa',
     text: {
-      primary: '#333333',   // Maps to --bc
-      secondary: '#666666', // Maps to --nc
+      primary: '#111827',
+      secondary: '#4B5563',
     },
-    error: '#e74c3c',
-    'error-content': '#ffffff', // Added
-    success: '#2ecc71',
-    'success-content': '#ffffff', // Added
-    warning: '#f1c40f',
-    'warning-content': '#ffffff', // Added
-    info: '#3498db',
-    'info-content': '#ffffff', // Added
+    error: '#EF4444',
+    'error-content': '#ffffff',
+    success: '#10B981',
+    'success-content': '#ffffff',
+    warning: '#F59E0B',
+    'warning-content': '#ffffff',
+    info: '#3B82F6',
+    'info-content': '#ffffff',
   },
   dark: {
-    primary: '#2980b9',
-    'primary-content': '#ffffff', // Added (adjust if needed for dark)
-    secondary: '#27ae60',
-    'secondary-content': '#ffffff', // Added (adjust if needed for dark)
-    accent: '#c0392b',
-    'accent-content': '#ffffff', // Added (adjust if needed for dark)
-    neutral: '#7f8c8d',
-    'neutral-content': '#ffffff', // Added (adjust if needed for dark)
-    base: '#1a1a1a',
-    background: '#121212', // Maps to --b1
-    surface: '#1e1e1e',    // Maps to --b2
+    primary: '#6366F1',
+    'primary-content': '#ffffff',
+    secondary: '#0EA5E9',
+    'secondary-content': '#ffffff',
+    accent: '#F97316',
+    'accent-content': '#ffffff',
+    neutral: '#9CA3AF',
+    'neutral-content': '#ffffff',
+    base: '#1F2937',
+    background: '#111827',
+    surface: '#1E293B',
     text: {
-      primary: '#f8f9fa',   // Maps to --bc
-      secondary: '#a0a0a0', // Maps to --nc
+      primary: '#F9FAFB',
+      secondary: '#D1D5DB',
     },
-    error: '#c0392b',
-    'error-content': '#ffffff', // Added (adjust if needed for dark)
-    success: '#27ae60',
-    'success-content': '#ffffff', // Added (adjust if needed for dark)
-    warning: '#f39c12',
-    'warning-content': '#ffffff', // Added (adjust if needed for dark)
-    info: '#2980b9',
-    'info-content': '#ffffff', // Added (adjust if needed for dark)
+    error: '#F87171',
+    'error-content': '#ffffff',
+    success: '#34D399',
+    'success-content': '#ffffff',
+    warning: '#FBBF24',
+    'warning-content': '#ffffff',
+    info: '#60A5FA',
+    'info-content': '#ffffff',
   },
 };
 

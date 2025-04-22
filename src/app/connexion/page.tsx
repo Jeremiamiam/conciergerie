@@ -9,15 +9,15 @@ export default function ConnexionPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex justify-between items-center">
             <div className="flex items-center">
-              <div className="w-12 h-12 bg-indigo-600 rounded-full mr-4"></div>
+              <div className="w-12 h-12 bg-red-600 rounded-full mr-4"></div>
               <h1 className="text-2xl font-bold text-gray-900">Les Conciergeries Rennaises</h1>
             </div>
             <nav className="flex space-x-6">
-              <Link href="/" className="text-gray-500 hover:text-indigo-600">Accueil</Link>
-              <Link href="/#services" className="text-gray-500 hover:text-indigo-600">Services</Link>
-              <Link href="/#locations" className="text-gray-500 hover:text-indigo-600">Nos espaces</Link>
-              <Link href="/#about" className="text-gray-500 hover:text-indigo-600">À propos</Link>
-              <Link href="/#contact" className="text-gray-500 hover:text-indigo-600">Contact</Link>
+              <Link href="/" className="text-gray-500 hover:text-red-600">Accueil</Link>
+              <Link href="/#services" className="text-gray-500 hover:text-red-600">Services</Link>
+              <Link href="/#locations" className="text-gray-500 hover:text-red-600">Nos espaces</Link>
+              <Link href="/#about" className="text-gray-500 hover:text-red-600">À propos</Link>
+              <Link href="/#contact" className="text-gray-500 hover:text-red-600">Contact</Link>
             </nav>
           </div>
         </div>
@@ -27,9 +27,9 @@ export default function ConnexionPage() {
       <section className="py-16">
         <div className="max-w-md mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-white rounded-lg shadow-md overflow-hidden">
-            <div className="bg-indigo-600 p-6 text-white text-center">
+            <div className="bg-red-600 p-6 text-white text-center">
               <h2 className="text-2xl font-bold">Accès espace dédié</h2>
-              <p className="mt-2 text-indigo-100">Connectez-vous pour accéder à votre espace</p>
+              <p className="mt-2 text-red-100">Connectez-vous pour accéder à votre espace</p>
             </div>
             
             <div className="p-6">
@@ -43,7 +43,7 @@ export default function ConnexionPage() {
                       id="email"
                       name="email"
                       type="email"
-                      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500"
                       placeholder="votre.email@exemple.com"
                     />
                   </div>
@@ -56,7 +56,7 @@ export default function ConnexionPage() {
                       id="password"
                       name="password"
                       type="password"
-                      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500"
                       placeholder="••••••••"
                     />
                   </div>
@@ -67,7 +67,7 @@ export default function ConnexionPage() {
                         id="remember_me"
                         name="remember_me"
                         type="checkbox"
-                        className="h-4 w-4 text-indigo-600 border-gray-300 rounded"
+                        className="h-4 w-4 text-red-600 border-gray-300 rounded"
                       />
                       <label htmlFor="remember_me" className="ml-2 block text-sm text-gray-700">
                         Se souvenir de moi
@@ -75,14 +75,14 @@ export default function ConnexionPage() {
                     </div>
                     
                     <div className="text-sm">
-                      <a href="#" className="text-indigo-600 hover:text-indigo-500">
+                      <a href="#" className="text-red-600 hover:text-red-500">
                         Mot de passe oublié ?
                       </a>
                     </div>
                   </div>
                   
                   <div>
-                    <Link href="/location/lacabane" className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    <Link href="/location/lacabane" className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
                       Se connecter
                     </Link>
                   </div>
@@ -122,7 +122,7 @@ export default function ConnexionPage() {
           <div className="mt-8 text-center">
             <p className="text-sm text-gray-600">
               Vous n'avez pas encore de compte ?{' '}
-              <a href="#" className="text-indigo-600 hover:text-indigo-500">
+              <a href="#" className="text-red-600 hover:text-red-500">
                 Contactez votre conciergerie
               </a>
             </p>

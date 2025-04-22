@@ -12,18 +12,18 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex justify-between items-center">
             <div className="flex items-center">
-              <div className="w-12 h-12 bg-indigo-600 rounded-full mr-4"></div>
+              <div className="w-12 h-12 bg-red-600 rounded-full mr-4"></div>
               <h1 className="text-2xl font-bold text-gray-900">{company.name}</h1>
             </div>
             <div className="flex items-center">
               <nav className="flex space-x-6 mr-8">
-                <Link href="/" className="text-gray-900 hover:text-indigo-600">Accueil</Link>
-                <Link href="#services" className="text-gray-500 hover:text-indigo-600">Services</Link>
-                <Link href="#locations" className="text-gray-500 hover:text-indigo-600">Nos espaces</Link>
-                <Link href="#about" className="text-gray-500 hover:text-indigo-600">À propos</Link>
-                <Link href="#contact" className="text-gray-500 hover:text-indigo-600">Contact</Link>
+                <Link href="/" className="text-gray-900 hover:text-red-600">Accueil</Link>
+                <Link href="#services" className="text-gray-500 hover:text-red-600">Services</Link>
+                <Link href="#locations" className="text-gray-500 hover:text-red-600">Nos espaces</Link>
+                <Link href="#about" className="text-gray-500 hover:text-red-600">À propos</Link>
+                <Link href="#contact" className="text-gray-500 hover:text-red-600">Contact</Link>
               </nav>
-              <Link href="/connexion" className="bg-indigo-600 text-white px-4 py-2 rounded-lg">
+              <Link href="/connexion" className="bg-red-600 text-white px-4 py-2 rounded-lg">
                 Espace dédié
               </Link>
             </div>
@@ -32,14 +32,14 @@ export default function HomePage() {
       </header>
 
       {/* Hero Section */}
-      <section className="bg-indigo-700 text-white">
+      <section className="bg-red-700 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-4xl font-bold mb-6">Services de conciergerie pour simplifier votre quotidien</h2>
               <p className="text-xl mb-8">{company.description}</p>
               <div className="flex space-x-4">
-                <Link href="#services" className="bg-white text-indigo-700 px-6 py-3 rounded-lg font-medium">
+                <Link href="#services" className="bg-white text-red-700 px-6 py-3 rounded-lg font-medium">
                   Découvrir nos services
                 </Link>
                 <Link href="/connexion" className="bg-transparent border border-white text-white px-6 py-3 rounded-lg font-medium">
@@ -48,7 +48,7 @@ export default function HomePage() {
               </div>
             </div>
             <div className="flex justify-center">
-              <div className="w-full h-80 bg-indigo-800 rounded-lg"></div>
+              <div className="w-full h-80 bg-red-800 rounded-lg"></div>
             </div>
           </div>
         </div>
@@ -63,7 +63,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {company.impact.stats.map((stat, index) => (
               <div key={index} className="bg-gray-50 p-6 rounded-lg text-center">
-                <p className="text-4xl font-bold text-indigo-600 mb-2">{stat.value}</p>
+                <p className="text-4xl font-bold text-red-600 mb-2">{stat.value}</p>
                 <p className="text-gray-600">{stat.label}</p>
               </div>
             ))}
@@ -79,7 +79,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6 mb-12">
             {categories.map((category) => (
               <div key={category.id} className="bg-white p-6 rounded-lg text-center shadow-sm hover:shadow-md transition-shadow">
-                <div className="w-16 h-16 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 bg-red-100 text-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
                   <span>{category.icon}</span>
                 </div>
                 <h3 className="font-bold mb-2">{category.name}</h3>
@@ -94,14 +94,14 @@ export default function HomePage() {
               <div key={service.id} className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
                 <div className="h-48 bg-gray-200"></div>
                 <div className="p-6">
-                  <div className="text-sm text-indigo-600 mb-1">{service.category}</div>
+                  <div className="text-sm text-red-600 mb-1">{service.category}</div>
                   <h3 className="font-bold text-xl mb-2">{service.name}</h3>
                   <p className="text-gray-600 mb-4">{service.description}</p>
                   <div className="flex justify-between items-center">
                     <span className="text-sm font-medium text-gray-800">
                       {service.provider}
                     </span>
-                    <Link href={`/service/${service.id}`} className="text-indigo-600 hover:text-indigo-800">
+                    <Link href={`/service/${service.id}`} className="text-red-600 hover:text-red-800">
                       En savoir plus
                     </Link>
                   </div>
@@ -111,7 +111,7 @@ export default function HomePage() {
           </div>
           
           <div className="text-center mt-10">
-            <button className="bg-indigo-600 text-white px-6 py-3 rounded-lg font-medium">
+            <button className="bg-red-600 text-white px-6 py-3 rounded-lg font-medium">
               Voir tous nos services
             </button>
           </div>
@@ -132,12 +132,12 @@ export default function HomePage() {
                   <p className="text-gray-600 mb-4">{location.description}</p>
                   <div className="text-sm text-gray-500 mb-4">{location.address}</div>
                   <div className="flex justify-between items-center">
-                    <div className="text-sm font-medium text-indigo-600">
+                    <div className="text-sm font-medium text-red-600">
                       {location.availableServices.length} services disponibles
                     </div>
                     <Link 
                       href="/connexion" 
-                      className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700"
+                      className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-red-600 hover:bg-red-700"
                     >
                       Accéder
                     </Link>
@@ -150,14 +150,14 @@ export default function HomePage() {
       </section>
 
       {/* Benefits Section */}
-      <section className="py-16 bg-indigo-50">
+      <section className="py-16 bg-red-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-center mb-12">Nos avantages</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {company.benefits.map((benefit, index) => (
               <div key={index} className="flex items-start">
-                <div className="flex-shrink-0 w-12 h-12 bg-indigo-600 text-white rounded-full flex items-center justify-center mr-4">
+                <div className="flex-shrink-0 w-12 h-12 bg-red-600 text-white rounded-full flex items-center justify-center mr-4">
                   ✓
                 </div>
                 <div>

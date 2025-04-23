@@ -1,10 +1,78 @@
-import React from 'react';
+'use client';
+
+import React, { useCallback } from 'react';
 import Link from 'next/link';
 import { locations, company } from '@/data/locations.json';
 import { services } from '@/data/services.json';
 import { categories } from '@/data/categories.json';
+import { 
+  HomeIcon,
+  BuildingOffice2Icon, 
+  HeartIcon,
+  ShoppingBagIcon,
+  BriefcaseIcon,
+  CalendarIcon,
+  TruckIcon,
+  ArrowRightIcon,
+  UserGroupIcon,
+  MapPinIcon,
+  CurrencyDollarIcon,
+  ClockIcon,
+  CheckIcon,
+  PhoneIcon,
+  EnvelopeIcon,
+  EnvelopeOpenIcon
+} from '@heroicons/react/24/outline';
 
 export default function HomePage() {
+  // Fonction pour le défilement fluide
+  const handleSmoothScroll = useCallback((e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
+    e.preventDefault();
+    const element = document.getElementById(targetId);
+    
+    if (element) {
+      window.scrollTo({
+        top: element.offsetTop - 80, // Décalage pour tenir compte de la hauteur du header
+        behavior: 'smooth'
+      });
+    }
+  }, []);
+
+  // Composant de lien d'ancrage avec défilement fluide
+  const SmoothScrollLink = ({ href, className, children }: { href: string; className?: string; children: React.ReactNode }) => {
+    if (href.startsWith('#')) {
+      const targetId = href.substring(1);
+      return (
+        <a 
+          href={href} 
+          className={className}
+          onClick={(e) => handleSmoothScroll(e, targetId)}
+        >
+          {children}
+        </a>
+      );
+    }
+    return <Link href={href} className={className}>{children}</Link>;
+  };
+
+  // Fonction pour obtenir l'icône correspondante à une catégorie
+  const getCategoryIcon = (iconName: string, className = "h-6 w-6") => {
+    switch(iconName) {
+      case 'ShoppingBasket':
+        return <ShoppingBagIcon className={className} />;
+      case 'Briefcase':
+        return <BriefcaseIcon className={className} />;
+      case 'Heart':
+        return <HeartIcon className={className} />;
+      case 'Car':
+        return <TruckIcon className={className} />;
+      case 'Calendar':
+        return <CalendarIcon className={className} />;
+      default:
+        return <CurrencyDollarIcon className={className} />;
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
@@ -12,19 +80,31 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex justify-between items-center">
             <div className="flex items-center">
-              <div className="w-12 h-12 bg-red-600 rounded-full mr-4"></div>
-              <h1 className="text-2xl font-bold text-gray-900">{company.name}</h1>
+              <Link href="/" className="flex items-center">
+                <div className="w-12 h-12 bg-red-600 rounded-full mr-4 flex items-center justify-center">
+                  <HomeIcon className="h-7 w-7 text-white" />
+                </div>
+                <h1 className="text-2xl font-bold text-gray-900">{company.name}</h1>
+              </Link>
             </div>
             <div className="flex items-center">
               <nav className="flex space-x-6 mr-8">
-                <Link href="/" className="text-gray-900 hover:text-red-600">Accueil</Link>
-                <Link href="#services" className="text-gray-500 hover:text-red-600">Services</Link>
-                <Link href="#locations" className="text-gray-500 hover:text-red-600">Nos espaces</Link>
-                <Link href="#about" className="text-gray-500 hover:text-red-600">À propos</Link>
-                <Link href="#contact" className="text-gray-500 hover:text-red-600">Contact</Link>
+                <SmoothScrollLink href="#services" className="text-gray-500 hover:text-red-600">
+                  Services
+                </SmoothScrollLink>
+                <SmoothScrollLink href="#locations" className="text-gray-500 hover:text-red-600">
+                  Nos espaces
+                </SmoothScrollLink>
+                <SmoothScrollLink href="#about" className="text-gray-500 hover:text-red-600">
+                  À propos
+                </SmoothScrollLink>
+                <SmoothScrollLink href="#contact" className="text-gray-500 hover:text-red-600">
+                  Contact
+                </SmoothScrollLink>
               </nav>
-              <Link href="/connexion" className="bg-red-600 text-white px-4 py-2 rounded-lg">
-                Espace dédié
+              <Link href="/connexion" className="bg-red-600 text-white px-4 py-2 rounded-lg flex items-center">
+                <UserGroupIcon className="h-5 w-5 mr-2" />
+                <span>Espace dédié</span>
               </Link>
             </div>
           </div>
@@ -39,11 +119,13 @@ export default function HomePage() {
               <h2 className="text-4xl font-bold mb-6">Services de conciergerie pour simplifier votre quotidien</h2>
               <p className="text-xl mb-8">{company.description}</p>
               <div className="flex space-x-4">
-                <Link href="#services" className="bg-white text-red-700 px-6 py-3 rounded-lg font-medium">
-                  Découvrir nos services
-                </Link>
-                <Link href="/connexion" className="bg-transparent border border-white text-white px-6 py-3 rounded-lg font-medium">
-                  Accéder à mon espace
+                <SmoothScrollLink href="#services" className="bg-white text-red-700 px-6 py-3 rounded-lg font-medium flex items-center">
+                  <span>Découvrir nos services</span>
+                  <ArrowRightIcon className="h-5 w-5 ml-2" />
+                </SmoothScrollLink>
+                <Link href="/connexion" className="bg-transparent border border-white text-white px-6 py-3 rounded-lg font-medium flex items-center">
+                  <UserGroupIcon className="h-5 w-5 mr-2" />
+                  <span>Accéder à mon espace</span>
                 </Link>
               </div>
             </div>
@@ -80,7 +162,7 @@ export default function HomePage() {
             {categories.map((category) => (
               <div key={category.id} className="bg-white p-6 rounded-lg text-center shadow-sm hover:shadow-md transition-shadow">
                 <div className="w-16 h-16 bg-red-100 text-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span>{category.icon}</span>
+                  {getCategoryIcon(category.icon)}
                 </div>
                 <h3 className="font-bold mb-2">{category.name}</h3>
                 <p className="text-sm text-gray-600">{category.description}</p>
@@ -101,8 +183,9 @@ export default function HomePage() {
                     <span className="text-sm font-medium text-gray-800">
                       {service.provider}
                     </span>
-                    <Link href={`/service/${service.id}`} className="text-red-600 hover:text-red-800">
-                      En savoir plus
+                    <Link href={`/service/${service.id}`} className="text-red-600 hover:text-red-800 flex items-center">
+                      <span>En savoir plus</span>
+                      <ArrowRightIcon className="h-4 w-4 ml-1" />
                     </Link>
                   </div>
                 </div>
@@ -111,8 +194,9 @@ export default function HomePage() {
           </div>
           
           <div className="text-center mt-10">
-            <button className="bg-red-600 text-white px-6 py-3 rounded-lg font-medium">
-              Voir tous nos services
+            <button className="bg-red-600 text-white px-6 py-3 rounded-lg font-medium flex items-center mx-auto">
+              <CurrencyDollarIcon className="h-5 w-5 mr-2" />
+              <span>Voir tous nos services</span>
             </button>
           </div>
         </div>
@@ -130,16 +214,21 @@ export default function HomePage() {
                 <div className="p-6">
                   <h3 className="font-bold text-xl mb-2">{location.name}</h3>
                   <p className="text-gray-600 mb-4">{location.description}</p>
-                  <div className="text-sm text-gray-500 mb-4">{location.address}</div>
+                  <div className="text-sm text-gray-500 mb-4 flex items-center">
+                    <MapPinIcon className="h-4 w-4 mr-1 text-red-600" />
+                    {location.address}
+                  </div>
                   <div className="flex justify-between items-center">
-                    <div className="text-sm font-medium text-red-600">
+                    <div className="text-sm font-medium text-red-600 flex items-center">
+                      <ClockIcon className="h-4 w-4 mr-1" />
                       {location.availableServices.length} services disponibles
                     </div>
                     <Link 
                       href="/connexion" 
                       className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-red-600 hover:bg-red-700"
                     >
-                      Accéder
+                      <span>Accéder</span>
+                      <ArrowRightIcon className="h-4 w-4 ml-1" />
                     </Link>
                   </div>
                 </div>
@@ -158,7 +247,7 @@ export default function HomePage() {
             {company.benefits.map((benefit, index) => (
               <div key={index} className="flex items-start">
                 <div className="flex-shrink-0 w-12 h-12 bg-red-600 text-white rounded-full flex items-center justify-center mr-4">
-                  ✓
+                  <CheckIcon className="h-6 w-6" />
                 </div>
                 <div>
                   <p className="text-lg font-medium">{benefit}</p>
@@ -184,7 +273,10 @@ export default function HomePage() {
               <ul className="space-y-2 text-gray-400">
                 {categories.map((category) => (
                   <li key={category.id}>
-                    <Link href="#" className="hover:text-white">{category.name}</Link>
+                    <Link href="#" className="hover:text-white flex items-center">
+                      <ArrowRightIcon className="h-3 w-3 mr-1" />
+                      {category.name}
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -195,7 +287,8 @@ export default function HomePage() {
               <ul className="space-y-2 text-gray-400">
                 {locations.map((location) => (
                   <li key={location.id}>
-                    <Link href="/connexion" className="hover:text-white">
+                    <Link href="/connexion" className="hover:text-white flex items-center">
+                      <MapPinIcon className="h-3 w-3 mr-1" />
                       {location.name}
                     </Link>
                   </li>
@@ -206,9 +299,9 @@ export default function HomePage() {
             <div>
               <h3 className="text-lg font-bold mb-4">Contact</h3>
               <address className="text-gray-400 not-italic">
-                <p>{company.contact.address}</p>
-                <p className="mt-2">{company.contact.phone}</p>
-                <p className="mt-2">{company.contact.email}</p>
+                <p className="flex items-center"><MapPinIcon className="h-4 w-4 mr-2" />{company.contact.address}</p>
+                <p className="mt-2 flex items-center"><PhoneIcon className="h-4 w-4 mr-2" />{company.contact.phone}</p>
+                <p className="mt-2 flex items-center"><EnvelopeOpenIcon className="h-4 w-4 mr-2" />{company.contact.email}</p>
               </address>
               <div className="mt-4 flex space-x-4">
                 <a href="#" className="text-gray-400 hover:text-white">

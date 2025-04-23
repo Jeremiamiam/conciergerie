@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { locations } from '@/data/locations.json';
 import { services } from '@/data/services.json';
 import { categories } from '@/data/categories.json';
+import { HomeIcon } from '@heroicons/react/24/outline';
 
 export async function generateStaticParams() {
   return locations.map((location) => ({
@@ -38,44 +39,44 @@ export default function LocationPage({ params }: { params: { slug: string } }) {
     switch (location.slug) {
       case 'lacabane': // Vert pour La Cabane
         return {
-          primary: 'green-600',
-          hover: 'green-800',
-          dark: 'green-700',
-          darker: 'green-800',
-          light: 'green-100',
+          primary: '#16a34a', // green-600
+          hover: '#166534', // green-800
+          dark: '#15803d', // green-700
+          darker: '#166534', // green-800
+          light: '#dcfce7', // green-100
           bgGradient: 'linear-gradient(rgba(22, 101, 52, 0.8), rgba(22, 101, 52, 0.8))',
           bgOpacity: 'green-800 bg-opacity-50',
           lightBg: 'green-50'
         };
       case 'arkea': // Violet pour Arkea
         return {
-          primary: 'purple-600',
-          hover: 'purple-800',
-          dark: 'purple-700',
-          darker: 'purple-800',
-          light: 'purple-100',
+          primary: '#9333ea', // purple-600
+          hover: '#6b21a8', // purple-800
+          dark: '#7e22ce', // purple-700
+          darker: '#6b21a8', // purple-800
+          light: '#f3e8ff', // purple-100
           bgGradient: 'linear-gradient(rgba(126, 34, 206, 0.8), rgba(126, 34, 206, 0.8))',
           bgOpacity: 'purple-800 bg-opacity-50',
           lightBg: 'purple-50'
         };
       case 'pei': // Orange pour PEI
         return {
-          primary: 'orange-500',
-          hover: 'orange-700',
-          dark: 'orange-600',
-          darker: 'orange-700',
-          light: 'orange-100',
+          primary: '#f97316', // orange-500
+          hover: '#c2410c', // orange-700
+          dark: '#ea580c', // orange-600
+          darker: '#c2410c', // orange-700
+          light: '#ffedd5', // orange-100
           bgGradient: 'linear-gradient(rgba(234, 88, 12, 0.8), rgba(234, 88, 12, 0.8))',
           bgOpacity: 'orange-700 bg-opacity-50',
           lightBg: 'orange-50'
         };
       default: // Bleu par défaut
         return {
-          primary: 'indigo-600',
-          hover: 'indigo-800',
-          dark: 'indigo-700',
-          darker: 'indigo-800',
-          light: 'indigo-100',
+          primary: '#4f46e5', // indigo-600
+          hover: '#3730a3', // indigo-800
+          dark: '#4338ca', // indigo-700
+          darker: '#3730a3', // indigo-800
+          light: '#e0e7ff', // indigo-100
           bgGradient: 'linear-gradient(rgba(67, 56, 202, 0.8), rgba(67, 56, 202, 0.8))',
           bgOpacity: 'indigo-800 bg-opacity-50',
           lightBg: 'indigo-50'
@@ -92,11 +93,14 @@ export default function LocationPage({ params }: { params: { slug: string } }) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex justify-between items-center">
             <div className="flex items-center">
-              <div className={`w-12 h-12 bg-${colors.primary} rounded-full mr-4`}></div>
-              <h1 className="text-2xl font-bold text-gray-900">Les Conciergeries Rennaises</h1>
+              <Link href="/" className="flex items-center">
+                <div className={`w-12 h-12 bg-${colors.primary} rounded-full mr-4 flex items-center justify-center`}>
+                  <HomeIcon className="h-7 w-7 text-white" aria-hidden="true" />
+                </div>
+                <h1 className="text-2xl font-bold text-gray-900">Les Conciergeries Rennaises</h1>
+              </Link>
             </div>
             <nav className="flex space-x-6">
-              <Link href="/" className={`text-gray-500 hover:text-${colors.primary}`}>Accueil</Link>
               <Link href="/#services" className={`text-gray-500 hover:text-${colors.primary}`}>Services</Link>
               <Link href="/#locations" className={`text-gray-500 hover:text-${colors.primary}`}>Nos espaces</Link>
               <Link href="/#about" className={`text-gray-500 hover:text-${colors.primary}`}>À propos</Link>
@@ -120,15 +124,18 @@ export default function LocationPage({ params }: { params: { slug: string } }) {
             <h1 className="text-4xl font-bold mb-4">{location.name}</h1>
             <p className="text-xl mb-6">{location.description}</p>
             <div className="flex flex-wrap gap-4 mb-6 text-sm">
-              <div className={`bg-${colors.bgOpacity} px-4 py-2 rounded-full`}>
+              <div className="bg-white bg-opacity-20 backdrop-blur-sm px-4 py-2 rounded-full">
                 <strong>Adresse:</strong> {location.address}
               </div>
-              <div className={`bg-${colors.bgOpacity} px-4 py-2 rounded-full`}>
+              <div className="bg-white bg-opacity-20 backdrop-blur-sm px-4 py-2 rounded-full">
                 <strong>Horaires:</strong> {location.openingHours}
               </div>
             </div>
             <div className="flex gap-4">
-              <button className={`bg-white text-${colors.dark} px-6 py-3 rounded-lg font-medium`}>
+              <button 
+                className="bg-white px-6 py-3 rounded-lg font-medium"
+                style={{ color: colors.dark }}
+              >
                 Nos services
               </button>
             </div>

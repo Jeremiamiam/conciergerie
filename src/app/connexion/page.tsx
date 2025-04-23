@@ -118,46 +118,15 @@ export default function ConnexionPage() {
               </form>
             </div>
             
-            <div className="px-6 py-4 bg-gray-50 border-t border-gray-200">
-              <div className="text-center">
-                <p className="text-sm text-gray-600">
-                  Choisir un espace dédié
-                </p>
-                <div className="mt-3 flex justify-center space-x-3">
-                  <Link 
-                    href="/location/lacabane" 
-                    className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50"
-                  >
-                    <BuildingOffice2Icon className="h-4 w-4 mr-1" />
-                    La Cabane
-                  </Link>
-                  <Link 
-                    href="/location/arkea" 
-                    className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50"
-                  >
-                    <BuildingOffice2Icon className="h-4 w-4 mr-1" />
-                    Arkea
-                  </Link>
-                  <Link 
-                    href="/location/pei" 
-                    className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50"
-                  >
-                    <BuildingOffice2Icon className="h-4 w-4 mr-1" />
-                    PEI
-                  </Link>
-                </div>
-              </div>
+            <div className="mt-8 text-center">
+              <p className="text-sm text-gray-600">
+                Vous n'avez pas encore de compte ?{' '}
+                <a href="#" className="text-red-600 hover:text-red-500 inline-flex items-center">
+                  <EnvelopeIcon className="h-4 w-4 mr-1" />
+                  <span>Contactez votre conciergerie</span>
+                </a>
+              </p>
             </div>
-          </div>
-          
-          <div className="mt-8 text-center">
-            <p className="text-sm text-gray-600">
-              Vous n'avez pas encore de compte ?{' '}
-              <a href="#" className="text-red-600 hover:text-red-500 inline-flex items-center">
-                <EnvelopeIcon className="h-4 w-4 mr-1" />
-                <span>Contactez votre conciergerie</span>
-              </a>
-            </p>
           </div>
         </div>
       </section>

@@ -31,6 +31,29 @@
       ]
     },
     {
+      "id": "colivia",
+      "name": "Colivia",
+      "slug": "colivia",
+      "description": "Espace de conciergerie situé à ViaSilva, axé sur les services écologiques et responsables pour les habitants du quartier.",
+      "address": "15 Avenue des Arts, Cesson-Sévigné",
+      "image": "/images/mock/colivia.jpg",
+      "coverImage": "/images/mock/colivia-cover.jpg",
+      "openingHours": "Mardi au samedi: 10h-13h et 15h-19h",
+      "contactPerson": "Marie Durand",
+      "email": "durand.marie@lesconciergeriesrennaises.fr",
+      "phone": "06 XX XX XX XX",
+      "availableServices": ["1", "2", "5", "7", "8", "9"],
+      "events": [
+        {
+          "id": "e4",
+          "title": "Atelier réparation vélos",
+          "date": "2025-06-10T14:00:00",
+          "description": "Apprenez à entretenir et réparer votre vélo vous-même.",
+          "image": "/images/mock/event-velo.jpg"
+        }
+      ]
+    },
+    {
       "id": "arkea",
       "name": "Arkea",
       "slug": "arkea",

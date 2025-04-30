@@ -4,6 +4,7 @@ import { services } from '@/data/services.json';
 import { locations } from '@/data/locations.json';
 import { categories } from '@/data/categories.json';
 import { HomeIcon, BuildingOffice2Icon, MapPinIcon, PhoneIcon, EnvelopeIcon } from '@heroicons/react/24/outline';
+import MainNav from '@/components/organisms/MainNav';
 
 export async function generateStaticParams() {
   return services.map((service) => ({
@@ -35,26 +36,7 @@ export default function ServicePage({ params }: { params: { id: string } }) {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <header className="bg-white shadow">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex justify-between items-center">
-            <div className="flex items-center">
-              <Link href="/" className="flex items-center">
-                <div className="w-12 h-12 bg-red-600 rounded-full mr-4 flex items-center justify-center">
-                  <HomeIcon className="h-7 w-7 text-white" />
-                </div>
-                <h1 className="text-2xl font-bold text-gray-900">Les Conciergeries Rennaises</h1>
-              </Link>
-            </div>
-            <nav className="flex space-x-6">
-              <Link href="/#services" className="text-gray-500 hover:text-red-600">Services</Link>
-              <Link href="/#locations" className="text-gray-500 hover:text-red-600">Nos espaces</Link>
-              <Link href="/#about" className="text-gray-500 hover:text-red-600">À propos</Link>
-              <Link href="/#contact" className="text-gray-500 hover:text-red-600">Contact</Link>
-            </nav>
-          </div>
-        </div>
-      </header>
+      <MainNav activePage="services" />
 
       {/* Breadcrumb */}
       <nav className="bg-gray-100 border-b">
@@ -141,10 +123,10 @@ export default function ServicePage({ params }: { params: { id: string } }) {
                     <p className="text-gray-600">Sur devis</p>
                   </div>
                   <Link
-                    href="/connexion"
+                    href="/#contact"
                     className="mt-6 w-full bg-red-600 text-white px-4 py-2 rounded-md text-center hover:bg-red-700 transition-colors inline-block"
                   >
-                    Réserver ce service
+                    Nous contacter pour ce service
                   </Link>
                 </div>
               </div>
@@ -175,67 +157,6 @@ export default function ServicePage({ params }: { params: { id: string } }) {
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div>
-              <h3 className="text-xl font-bold mb-4">Les Conciergeries Rennaises</h3>
-              <p className="text-gray-400">
-                Première conciergerie d'entreprises créée à Rennes, intervenant à Rennes, 
-                Angers, Brest et Quimper.
-              </p>
-            </div>
-            
-            <div>
-              <h3 className="text-lg font-bold mb-4">Liens rapides</h3>
-              <ul className="space-y-2 text-gray-400">
-                <li><Link href="/#services" className="hover:text-white">Services</Link></li>
-                <li><Link href="/#locations" className="hover:text-white">Nos espaces</Link></li>
-                <li><Link href="/#about" className="hover:text-white">À propos</Link></li>
-                <li><Link href="/#contact" className="hover:text-white">Contact</Link></li>
-              </ul>
-            </div>
-            
-            <div>
-              <h3 className="text-lg font-bold mb-4">Contact</h3>
-              <ul className="space-y-2 text-gray-400">
-                <li className="flex items-center">
-                  <MapPinIcon className="h-4 w-4 mr-2" />
-                  12 Rue des Conciergeries, 35000 Rennes
-                </li>
-                <li className="flex items-center">
-                  <PhoneIcon className="h-4 w-4 mr-2" />
-                  02 XX XX XX XX
-                </li>
-                <li className="flex items-center">
-                  <EnvelopeIcon className="h-4 w-4 mr-2" />
-                  contact@lesconciergeriesrennaises.fr
-                </li>
-              </ul>
-            </div>
-            
-            <div>
-              <h3 className="text-lg font-bold mb-4">Newsletter</h3>
-              <div className="flex">
-                <input
-                  type="email"
-                  placeholder="Votre email"
-                  className="flex-1 px-4 py-2 rounded-l-md text-gray-900"
-                />
-                <button className="bg-red-600 text-white px-4 py-2 rounded-r-md hover:bg-red-700">
-                  OK
-                </button>
-              </div>
-            </div>
-          </div>
-          
-          <div className="border-t border-gray-800 mt-12 pt-8 text-center md:text-left">
-            <p className="text-gray-400">© {new Date().getFullYear()} Les Conciergeries Rennaises. Tous droits réservés.</p>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 } 

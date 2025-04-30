@@ -21,8 +21,10 @@ import {
   CheckIcon,
   PhoneIcon,
   EnvelopeIcon,
-  EnvelopeOpenIcon
+  EnvelopeOpenIcon,
+  LockClosedIcon
 } from '@heroicons/react/24/outline';
+import MainNav from '@/components/organisms/MainNav';
 
 export default function HomePage() {
   // Fonction pour le défilement fluide
@@ -37,23 +39,6 @@ export default function HomePage() {
       });
     }
   }, []);
-
-  // Composant de lien d'ancrage avec défilement fluide
-  const SmoothScrollLink = ({ href, className, children }: { href: string; className?: string; children: React.ReactNode }) => {
-    if (href.startsWith('#')) {
-      const targetId = href.substring(1);
-      return (
-        <a 
-          href={href} 
-          className={className}
-          onClick={(e) => handleSmoothScroll(e, targetId)}
-        >
-          {children}
-        </a>
-      );
-    }
-    return <Link href={href} className={className}>{children}</Link>;
-  };
 
   // Fonction pour obtenir l'icône correspondante à une catégorie
   const getCategoryIcon = (iconName: string, className = "h-6 w-6") => {
@@ -73,43 +58,17 @@ export default function HomePage() {
     }
   };
 
+  // Filtrer uniquement les espaces publics (La Cabane et Colivia)
+  const publicLocations = locations.filter(location => 
+    location.id === "lacabane" || location.id === "colivia"
+  );
+
+  console.log("Espaces publics :", publicLocations); // Pour vérifier que les deux espaces sont bien filtrés
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <header className="bg-white shadow">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex justify-between items-center">
-            <div className="flex items-center">
-              <Link href="/" className="flex items-center">
-                <div className="w-12 h-12 bg-red-600 rounded-full mr-4 flex items-center justify-center">
-                  <HomeIcon className="h-7 w-7 text-white" />
-                </div>
-                <h1 className="text-2xl font-bold text-gray-900">{company.name}</h1>
-              </Link>
-            </div>
-            <div className="flex items-center">
-              <nav className="flex space-x-6 mr-8">
-                <SmoothScrollLink href="#services" className="text-gray-500 hover:text-red-600">
-                  Services
-                </SmoothScrollLink>
-                <SmoothScrollLink href="#locations" className="text-gray-500 hover:text-red-600">
-                  Nos espaces
-                </SmoothScrollLink>
-                <SmoothScrollLink href="#about" className="text-gray-500 hover:text-red-600">
-                  À propos
-                </SmoothScrollLink>
-                <SmoothScrollLink href="#contact" className="text-gray-500 hover:text-red-600">
-                  Contact
-                </SmoothScrollLink>
-              </nav>
-              <Link href="/connexion" className="bg-red-600 text-white px-4 py-2 rounded-lg flex items-center">
-                <UserGroupIcon className="h-5 w-5 mr-2" />
-                <span>Espace dédié</span>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </header>
+      <MainNav activePage="home" />
 
       {/* Hero Section */}
       <section className="bg-red-700 text-white">
@@ -119,14 +78,14 @@ export default function HomePage() {
               <h2 className="text-4xl font-bold mb-6">Services de conciergerie pour simplifier votre quotidien</h2>
               <p className="text-xl mb-8">{company.description}</p>
               <div className="flex space-x-4">
-                <SmoothScrollLink href="#services" className="bg-white text-red-700 px-6 py-3 rounded-lg font-medium flex items-center">
+                <a 
+                  href="#services" 
+                  className="bg-white text-red-700 px-6 py-3 rounded-lg font-medium flex items-center"
+                  onClick={(e) => handleSmoothScroll(e, 'services')}
+                >
                   <span>Découvrir nos services</span>
                   <ArrowRightIcon className="h-5 w-5 ml-2" />
-                </SmoothScrollLink>
-                <Link href="/connexion" className="bg-transparent border border-white text-white px-6 py-3 rounded-lg font-medium flex items-center">
-                  <UserGroupIcon className="h-5 w-5 mr-2" />
-                  <span>Accéder à mon espace</span>
-                </Link>
+                </a>
               </div>
             </div>
             <div className="flex justify-center">
@@ -137,18 +96,28 @@ export default function HomePage() {
       </section>
 
       {/* Impact Section */}
-      <section className="py-16 bg-white" id="about">
+      <section className="py-16 bg-green-50" id="about">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center mb-12">{company.impact.title}</h2>
-          <p className="text-lg text-gray-600 text-center max-w-3xl mx-auto mb-12">{company.impact.description}</p>
+          <h2 className="text-3xl font-bold text-center mb-6">{company.impact.title}</h2>
+          <p className="text-lg text-gray-600 text-center max-w-3xl mx-auto mb-8">{company.impact.description}</p>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {company.impact.stats.map((stat, index) => (
-              <div key={index} className="bg-gray-50 p-6 rounded-lg text-center">
-                <p className="text-4xl font-bold text-red-600 mb-2">{stat.value}</p>
-                <p className="text-gray-600">{stat.label}</p>
+              <div key={index} className="bg-white p-6 rounded-lg text-center shadow-sm hover:shadow-md transition-shadow">
+                <p className="text-4xl font-bold text-green-600 mb-2">{stat.value}</p>
+                <p className="text-gray-700">{stat.label}</p>
               </div>
             ))}
+          </div>
+          
+          <div className="mt-10 text-center">
+            <a 
+              href="#contact" 
+              className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-green-600 hover:bg-green-700"
+              onClick={(e) => handleSmoothScroll(e, 'contact')}
+            >
+              En savoir plus sur notre démarche
+            </a>
           </div>
         </div>
       </section>
@@ -156,7 +125,16 @@ export default function HomePage() {
       {/* Category Section */}
       <section className="py-16 bg-gray-50" id="services">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center mb-12">Nos services</h2>
+          <h2 className="text-3xl font-bold text-center mb-4">Nos services</h2>
+          <div className="text-center mb-8">
+            <Link 
+              href="/services"
+              className="text-red-600 hover:text-red-800 inline-flex items-center text-lg"
+            >
+              <span>Voir tous les détails</span>
+              <ArrowRightIcon className="h-5 w-5 ml-1" />
+            </Link>
+          </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6 mb-12">
             {categories.map((category) => (
@@ -194,10 +172,13 @@ export default function HomePage() {
           </div>
           
           <div className="text-center mt-10">
-            <button className="bg-red-600 text-white px-6 py-3 rounded-lg font-medium flex items-center mx-auto">
+            <Link 
+              href="/services" 
+              className="bg-red-600 text-white px-6 py-3 rounded-lg font-medium flex items-center mx-auto"
+            >
               <CurrencyDollarIcon className="h-5 w-5 mr-2" />
               <span>Voir tous nos services</span>
-            </button>
+            </Link>
           </div>
         </div>
       </section>
@@ -205,32 +186,34 @@ export default function HomePage() {
       {/* Locations Section */}
       <section className="py-16 bg-white" id="locations">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center mb-12">Nos espaces de conciergerie</h2>
+          <h2 className="text-3xl font-bold text-center mb-4">Nos espaces de conciergerie</h2>
+          <div className="text-center mb-8">
+            <Link 
+              href="/espaces"
+              className="text-red-600 hover:text-red-800 inline-flex items-center text-lg"
+            >
+              <span>Voir tous les détails</span>
+              <ArrowRightIcon className="h-5 w-5 ml-1" />
+            </Link>
+          </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {locations.map((location) => (
-              <div key={location.id} className="bg-gray-50 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                <div className="h-48 bg-gray-200"></div>
-                <div className="p-6">
-                  <h3 className="font-bold text-xl mb-2">{location.name}</h3>
-                  <p className="text-gray-600 mb-4">{location.description}</p>
-                  <div className="text-sm text-gray-500 mb-4 flex items-center">
-                    <MapPinIcon className="h-4 w-4 mr-1 text-red-600" />
-                    {location.address}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {publicLocations.map((location) => (
+              <div key={location.id} className="bg-gray-50 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                <div className="h-24 bg-gray-200 rounded-t-lg"></div>
+                <div className="p-4">
+                  <h3 className="font-bold text-lg mb-1">{location.name}</h3>
+                  <div className="text-xs text-gray-500 mb-3 flex items-center">
+                    <MapPinIcon className="h-3 w-3 mr-1 text-red-600 flex-shrink-0" />
+                    <span className="truncate">{location.address}</span>
                   </div>
-                  <div className="flex justify-between items-center">
-                    <div className="text-sm font-medium text-red-600 flex items-center">
-                      <ClockIcon className="h-4 w-4 mr-1" />
-                      {location.availableServices.length} services disponibles
-                    </div>
-                    <Link 
-                      href="/connexion" 
-                      className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-red-600 hover:bg-red-700"
-                    >
-                      <span>Accéder</span>
-                      <ArrowRightIcon className="h-4 w-4 ml-1" />
-                    </Link>
-                  </div>
+                  <Link 
+                    href={`/location/${location.slug}`}
+                    className="inline-flex items-center px-3 py-1 text-xs font-medium rounded-md text-white bg-red-600 hover:bg-red-700 w-full justify-center"
+                  >
+                    <span>Accéder</span>
+                    <ArrowRightIcon className="h-3 w-3 ml-1" />
+                  </Link>
                 </div>
               </div>
             ))}
@@ -257,75 +240,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12" id="contact">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div>
-              <h3 className="text-xl font-bold mb-4">{company.name}</h3>
-              <p className="text-gray-400 mb-4">{company.description.substring(0, 100)}...</p>
-              <p className="text-gray-400">Depuis {company.founding}</p>
-            </div>
-            
-            <div>
-              <h3 className="text-lg font-bold mb-4">Nos services</h3>
-              <ul className="space-y-2 text-gray-400">
-                {categories.map((category) => (
-                  <li key={category.id}>
-                    <Link href="#" className="hover:text-white flex items-center">
-                      <ArrowRightIcon className="h-3 w-3 mr-1" />
-                      {category.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            
-            <div>
-              <h3 className="text-lg font-bold mb-4">Nos espaces</h3>
-              <ul className="space-y-2 text-gray-400">
-                {locations.map((location) => (
-                  <li key={location.id}>
-                    <Link href="/connexion" className="hover:text-white flex items-center">
-                      <MapPinIcon className="h-3 w-3 mr-1" />
-                      {location.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            
-            <div>
-              <h3 className="text-lg font-bold mb-4">Contact</h3>
-              <address className="text-gray-400 not-italic">
-                <p className="flex items-center"><MapPinIcon className="h-4 w-4 mr-2" />{company.contact.address}</p>
-                <p className="mt-2 flex items-center"><PhoneIcon className="h-4 w-4 mr-2" />{company.contact.phone}</p>
-                <p className="mt-2 flex items-center"><EnvelopeOpenIcon className="h-4 w-4 mr-2" />{company.contact.email}</p>
-              </address>
-              <div className="mt-4 flex space-x-4">
-                <a href="#" className="text-gray-400 hover:text-white">
-                  FB
-                </a>
-                <a href="#" className="text-gray-400 hover:text-white">
-                  IG
-                </a>
-                <a href="#" className="text-gray-400 hover:text-white">
-                  LI
-                </a>
-              </div>
-            </div>
-          </div>
-          
-          <div className="border-t border-gray-800 mt-12 pt-8 flex justify-between">
-            <p className="text-gray-400">© {new Date().getFullYear()} {company.name}. Tous droits réservés.</p>
-            <div className="flex space-x-6 text-gray-400">
-              <Link href="#" className="hover:text-white">Mentions légales</Link>
-              <Link href="#" className="hover:text-white">Politique de confidentialité</Link>
-            </div>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }

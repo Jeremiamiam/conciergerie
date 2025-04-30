@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { Inter, Montserrat } from 'next/font/google';
 import '@/styles/globals.css';
 import Providers from './providers';
+import Footer from '@/components/organisms/Footer';
 // Removed import for DesignSystemPanel as it will be moved to /theme page
 // import DesignSystemPanel from '@/components/ui/DesignSystemPanel'; 
 
@@ -31,6 +32,7 @@ export default function RootLayout({
             <main className="flex-grow">
               {children}
             </main>
+            <Footer />
           </div>
           {/* Panel removed from layout */}
         </Providers>
